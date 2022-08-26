@@ -1,0 +1,59 @@
+﻿@model Pizzabites.Models.Customer
+@{
+    ViewBag.Title = "Customer Profile";
+    @Styles.Render("~/Content/css")
+}
+
+
+<div class="container userprofileform">
+    <div class="row userprofileformrow">
+        <div class="col-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 userprofiledit ">
+            <div class="userprofileheading mt-4">
+                <h2 class="userprofileheadinguser">Customer's Profile</h2>
+            </div>
+            <form action="~/Home/UpdateProfile" method="post">
+                <div class="mb-4 mt-2 userprofilecontents">
+                    <p class="userprofilelabels">Full Name:</p>
+                    <input type="text" placeholder="Full Name" name="CUSName" value="@Model.CUSName" class="form-control userformholders" required />
+                </div>
+                <!-- **********available Name er ekta variable thakbe... edit button click korle edit kora jabe.*********** -->
+                <div class="mb-4 mt-2 userprofilecontents">
+                    <p class="userprofilelabels">Email:</p>
+                    <input type="email" placeholder="Email" name="CUSEmail" value="@Model.CUSEmail" class="form-control userformholders" disabled />
+                </div>
+                <div class="mb-4 mt-2 userprofilecontents">
+                    <p class="userprofilelabels">Contact No:</p>
+                    <input type="text" placeholder="Contact No." name="CUSContactNo" value="@Model.CUSContactNo" class="form-control userformholders" required />
+                </div>
+                <div class="mb-4 mt-2 userprofilecontents">
+                    <p class="userprofilelabels">Password:</p>
+                    <input type="password" placeholder="Type in password to update" name="CUSPassword" value="" class="form-control userformholders" required />
+                </div>
+
+                <div class="mb-4 mt-2 userprofilecontents">
+                    <p class="userprofilelabels">User Address:</p>
+                    <input type="text" placeholder="User Address" name="CUSAddress" value="@Model.CUSAddress" class="form-control userformholders" required />
+                </div>
+                <div class="row">
+                    <div class="col-6 col-xl-6 col-lg-6 col-sm-12 col-md-6">
+                        <button type="submit" class="btn-success rounded-bottom rounded-top w-100 h-100 pt-2 pb-2">Update Profile</button>
+                    </div>
+                    @*<div class="col-6 col-xl-6 col-lg-6 col-sm-12 col-md-6">
+                            <button type="submit" class="btn-danger rounded-bottom rounded-top w-100 h-100 pt-2 pb-2">Edit</button>
+                        </div>*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@if (ViewBag.NoUser != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.NoUser");
+        window.location.href = "Login";
+    };
+    </script>
+}

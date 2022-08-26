@@ -1,0 +1,33 @@
+﻿@model List<Pizzabites.Models.Product>
+@{
+    ViewBag.Title = "ProductPage";
+    @Styles.Render("~/Content/css");
+}
+<div class="container">
+
+    <div class="row">
+        <h2 class="m-3">@ViewBag.productCategory</h2>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3 menuall bg-gradient bg-opacity-75 rounded-bottom">
+                <div class="Items">
+                    <img src="~/images/@item.PRImage">
+                    <div class="allthings">
+                        <p class="itemheading">@item.PRName<p>
+                        @*<p class="itemdes">@item.PRDescription.Substring(0,10)</p>*@
+                        <div class="add d-inline-flex">
+                            <p class="addalliconsp">@item.PRPrize/=</p>
+                        </div>
+                        <button class="addtocart" onclick="location.href='/Home/ProductPreview/@item.PRID'">
+                            <p class="">Details</p>
+                        </button>
+                       
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

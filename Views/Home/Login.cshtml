@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@model Pizzabites.Models.Customer
+
+
+
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript">
+    addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+</script>
+<!-- Meta tag Keywords -->
+<!-- css files -->
+<link rel="stylesheet" href="~/Content/css/Signin_style.css" type="text/css" media="all" />
+<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+
+<div class="main-content-agile">
+    <div class="sub-main-w3">
+
+        <h2> Login Here </h2>
+  
+        @using (@Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="pom-agile">
+                <div class="col-md-40">
+                    <input type="email" placeholder="Email" class="form-control" id="UserEmail" name="CUSEmail" required />
+                </div>
+            </div>
+
+
+            <br />
+
+            <div class="pom-agile">
+                <div class="col-md-40">
+                    <input type="password" placeholder="Password" class="form-control" id="UserPassword" name="CUSPassword" required />
+                </div>
+            </div>
+
+            <br />
+            <div>
+
+                <a href="#" class="text-white ">Don't have any account?</a>
+            </div>
+
+            <div class="clear"></div>
+
+
+            <p><a href="/Home/Register" class="text-warning">Create a new account</a></p>
+
+
+            <br />
+            <div class="form-group">
+                <div class="right-w3l">
+                    <input type="submit" value="Login" class="btn btn-success btn-block" />
+                </div>
+            </div>
+            <br />
+            <center>
+                <div class="p-3 mb-2  text-danger">
+                    <div class="col-md-offset-2 col-md-10">
+                        <label>@ViewBag.Notification</label>
+                    </div>
+                </div>
+            </center>
+
+
+        }
+
+    </div>
+</div>
+
+@if (ViewBag.Login != null)
+{
+
+    <script type="text/javascript">
+
+               window.onload = function () {
+           alert("@ViewBag.Login");
+            window.location.href = "Index";
+        };
+    </script>
+}
+
+

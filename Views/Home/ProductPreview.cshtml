@@ -1,0 +1,90 @@
+﻿@model Object[]
+@{
+    ViewBag.Title = "ProductPreview";
+    var Product = (Pizzabites.Models.Product)Model[0];
+    var comments = (List<Pizzabites.Models.Comment>)Model[1];
+    @Styles.Render("~/Content/css");
+}
+
+<div class="container">
+    <div class="row m-5 pt-2">
+        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5 menuall">
+            <img src="~/images/@Product.PRImage">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
+
+            <p class="itemheading allpwrite">@Product.PRName</p>
+
+            <div class="d-inline-flex">
+                <p class="addalliconsp">Type</p>
+                <p class="addalliconspqua">@Product.PRType</p>
+            </div>
+
+            <p class="itemdes allpwrite">@Product.PRDescription</p>
+
+
+
+
+            <p class="addalliconsp allpwrite">@Product.PRPrize /=</p>
+            @if ((Session["CUSName"] != null))
+            {
+                if ((Session["CUSName"] == "Admin"))
+                {
+                    <br />
+                }
+                else
+                {
+                    <button class="addtocart" onclick="location.href = '/home/AddToCart?id=@Product.PRID'">
+                        @*<button class="addtocart" onclick="myFunction()">*@
+
+                        <p class="text-align-centre">ADD TO CART</p>
+                    </button>
+                }
+            }
+        </div>
+    </div>
+    @if (Session["CUSName"] != null)
+    {
+        <form action="../CommentPost" method="post">
+            <input name="ProductID" value="@Product.PRID" hidden />
+            <div class="form-floating mt-3 mb-1">
+                <textarea class="form-control cotext" name="CommentMessage" id="floatingTextarea" placeholder="Leave us a comment."></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Comment</button>
+        </form>
+    }
+    else
+    {
+        <p><h3> <b>Login first to order and comment</b> </h3></p>
+    }
+
+    <div class="row">
+        <div class="col-xl-5">
+            <h2 class="headcomment">Comments</h2>
+        </div>
+    </div>
+    <div class="row rowcomment">
+        @foreach (var item in comments)
+        {
+            <div class="col-xl-12">
+                <h5 class="Cusname">@item.CustName</h5>
+                <p class="Cuscomment">@item.CommentMessage</p>
+            </div>
+        }
+
+    </div>
+</div>
+
+@if (ViewBag.AddedItem != null)
+{
+    <script type="text/javascript">
+
+               window.onload = function () {
+           alert("@ViewBag.AddedItem");
+            window.location.href = "Orders";
+        };
+    </script>
+
+}

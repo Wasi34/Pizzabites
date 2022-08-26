@@ -1,0 +1,321 @@
+
+.row .menuall {
+    padding : 14px;
+    margin: 30px;
+    border-radius: 10px;
+}
+
+
+.menuall img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+
+
+.itemheading {
+    font-size: 100%;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-left: 10px;
+    color: wheat;
+}
+
+
+.itemdes{
+    font-size: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: lavender;
+}
+
+
+.addalliconsp {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    color: rgb(167, 248, 235);
+}
+
+.addall {
+    display: flex;
+    margin-left: 20%;
+    font-size: 15px;
+    align-items: baseline;
+}
+
+.minusplus {
+    background: none;
+    border: none;
+    padding-left: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 5px;
+    border-radius: 50%;
+}
+
+.minusplus:hover {
+    background: indianred;
+    color: ivory;
+}
+
+.addallicons {
+    color: rgb(231, 218, 218);
+}
+
+.addtocart {
+    display: flex;
+    border-style: none;
+    align-items: baseline;
+    text-align:center;
+    justify-content: center;
+    padding-top:10px;
+    background-color: black;
+    color: #86C232;
+    border-radius: 15px;
+    width: 100%;
+    font-size: 18px;
+}
+
+.addtocart:hover {
+    background: indianred;
+    color: ivory;
+}
+
+
+
+.footer_wrapper {
+    align-items: flex-end;
+}
+
+.footwrite {
+    text-decoration: none;
+    color: wheat;
+}
+
+.footicons {
+    font-size: 30px;
+}
+
+.last {
+    color: tomato;
+}
+
+.viewmore {
+    border: none;
+    width: 20%;
+    color: black;
+    background-color: darkgray;
+    font-size: 18px;
+    padding-top: 1.5%;
+    text-align: center;
+    align-items: baseline;
+    display: flex;
+    justify-content: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 30px;
+}
+
+.viewmore:hover {
+    color: lightgoldenrodyellow;
+    background-color: indianred;
+}
+
+.arrow {
+    font-size: 20px;
+    padding-left: 5px;
+    display: block;
+}
+
+.registerpage{
+    margin-left: 210px;
+}
+
+.addalliconspqua {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    color: rgb(127, 248, 235);
+}
+
+::placeholder{
+    color: red;
+    opacity: .3;
+}
+
+
+/*Product Preview page starts from here....*/
+
+.Cuscomment {
+    color: blueviolet;
+    font-size: 20px;
+    margin-left: 50px;
+}
+
+.Cusname {
+    color: indianred;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.headcomment{
+    margin-top: 15px;
+    font-weight: bold;
+    color: cadetblue;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.rowcomment{
+    background-color: black;
+    border-radius: 20px;
+    opacity: .65;
+}
+
+.cotext{
+    resize: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Contact.css..........*/
+
+.contact {
+    max-height: 1000px;
+    height: 500px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.bodybg{
+}
+
+
+.Incontact{
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+.headcontact{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bolder;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.textcontact{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bolder;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: cadetblue;
+}
+
+
+.contactemail {
+    color: aquamarine;
+    font-size: 30px;
+    font-family: 'Arial Rounded MT';
+}
+
+.contactwrite{
+    margin-left: 50px;
+    font-size: 20px;
+    color: cornflowerblue;
+}
+
+
+
+
+.userprofileheadinguser {
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+}
+
+
+.userprofilelabels {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    padding-top: 10px;
+    font-size: 16px;
+    text-align: left;
+}
+
+
+.adminbutton {
+    text-align: center;
+    font-size: 30px;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 8px black;
+}
+
+
+.adminbutton:hover {
+    background-color: black;
+    color: aqua;
+}
+
+.ordertable {
+    text-align: center;
+    box-shadow: 0 5px 10px grey;
+    color: rgb(250, 193, 193);
+}
+
+.orderhead {
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+}
+
+.orderdatas {
+    color: darkgrey;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+.plusMinusButton {
+    padding: 5px 12px 5px 12px;
+    font-size: 13px;
+    border-radius: 10px;
+    border-width: 2px;
+    color: #384f5e;
+    background-color: #7c97c9;
+    border-color: #223349;
+    width: 100%;
+}
+
+    .plusMinusButton:hover,
+    .plusMinusButton:active,
+    .plusMinusButton:focus,
+    .plusMinusButton.active {
+        background: #1f3247;
+        color: #ffffff;
+        border-color: #25325e;
+    }
+
+
+.upload{
+    margin-right: 50px;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+
+.del{
+    text-align:center;
+}

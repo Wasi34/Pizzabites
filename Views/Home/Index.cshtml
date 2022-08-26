@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<link href="/Content/css/style.css" rel="stylesheet" type="text/css">
+<section class="home">
+
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <!-- Showing Video Background-->
+
+                <div class="video-container">
+                    <div class="color-overlay">
+                        <video id="vidBG" src="/Content/images/vid1.mp4" autoplay muted loop class="d-block w-100" alt="..."></video>
+                    </div>
+                </div>
+                <div class="welcome">
+                    <h1>Welcome to Pizzabites</h1>
+                </div>
+            </div>
+
+            <div class="carousel-item" data-bs-interval="7000">
+
+                <div class="video-container">
+                    <div class="color-overlay">
+                        <video src="/Content/images/vid2.mp4" autoplay muted loop class="d-block w-100" alt="..."></video>
+                    </div>
+                </div>
+                <div class="welcome">
+                    <h1>Heaven for the Pizzalovers</h1>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <div class="video-container">
+                    <div class="color-overlay">
+                        <video src="/Content/images/vid3.mp4" autoplay muted loop class="d-block w-100" alt="..."></video>
+                    </div>
+                </div>
+                <div class="welcome">
+                    <h1>Order Now to Taste the Best Pizza</h1>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+<!--About section starts-->
+<section class="about">
+
+    <div class='container-fluid mx-auto mt-5 mb-5 col-12' style="text-align: center">
+        <div class="p-3 mb-2 text-dark">
+            <div class="hd">Why People Believe in Us</div>
+            <p><small class="text-muted">Always render more and better service as your expectation. </small></p>
+        </div>
+
+        <div class="p-3 mb-2  text-white">
+
+            <div class="row" style="justify-content: center">
+                <div class="card col-md-3 col-12">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <img class="img" src="https://i.imgur.com/S7FJza5.png" />
+                            <div class="shadow"></div>
+                            <div class="card-title"> Buy in cheapest price </div>
+                            <div class="card-subtitle">
+                                <p> <small class="text-muted">Something special in mind?<br> We can accommodate a wide variety of requests! </small> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card col-md-3 col-12 ml-2">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <img class="img" src="https://i.imgur.com/xUWJuHB.png" />
+                            <div class="card-title"> Our goal </div>
+                            <div class="card-subtitle">
+                                <p> <small class="text-muted"> We work with importers and leading suppliers to ensure that our customers get the best pizza in town.<br> All our pizzas are 100% Halal and (in our humble opinion) delicious! </small> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card col-md-3 col-12 ml-2">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <img class="img rck" src="https://i.imgur.com/rG3CGn3.png" />
+                            <div class="card-title"> Order Online </div>
+                            <div class="card-subtitle">
+                                <p> <small class="text-muted">PRE-ORDERS: call us in advance to arrange delivery of large orders at specific times.</small> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    
+</section>
+<!--About section ENDS-->

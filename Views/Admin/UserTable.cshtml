@@ -1,0 +1,53 @@
+﻿@model List<Pizzabites.Models.Customer>
+@{
+    ViewBag.Title = "User Table";
+    @Styles.Render("~/Content/css");
+}
+
+<div class="container">
+    <div class="row">
+        <h2 class="mt-3 mb-4">UserTable</h2>
+    </div>
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <table class="table table-bordered ordertable">
+                <thead>
+                    <tr class="text-align-center">
+                        <th scope="col" class="orderhead">User Name</th>
+                        <th scope="col" class="orderhead">Email</th>
+                        <th scope="col" class="orderhead">Contact</th>
+                        <th scope="col" class="orderhead">Address</th>
+                        <th scope="col" class="orderhead">Remove</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class='orderdatas'>@item.CUSName</td>
+                            <td class='orderdatas'>@item.CUSEmail</td>
+                            <td class='orderdatas'>@item.CUSContactNo</td>
+                            <td class='orderdatas'>@item.CUSAddress</td>
+                            <td>
+                                <form action="../Admin/RemoveUser" method='POST'>
+                                    <input name="CUSEmail" value="@item.CUSEmail" hidden />
+                                    <button name='' type="submit" class='plusMinusButton'> REMOVE </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@if (ViewBag.AdminLogin != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.AdminLogin");
+            window.location.href = "../Home/Index";
+        };
+    </script>
+}

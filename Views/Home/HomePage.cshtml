@@ -1,0 +1,185 @@
+﻿@model List<Pizzabites.Models.Product>
+
+@{
+    ViewBag.Title = "Home Page";
+    @Styles.Render("~/Content/css");
+}
+
+<div class="container">
+    <h3 class="text-center mt-3">Pizza</h3>
+    <div class="row">
+        @{
+            int i = 0;
+        }
+        @foreach (var item in Model)
+        {
+            if (item.PRType.Equals("Pizza"))
+            {
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall bg-gradient bg-opacity-75 rounded-bottom">
+                    <div class="Items">
+                        <img src="~/images/@item.PRImage">
+                        <div class="allthings">
+                            <p class="itemheading">@item.PRName<p>
+                            @*<p class="itemdes">@item.PRDescription.Substring(0, 10) </p>*@
+                            <div class="add d-inline-flex">
+                                <p class="addalliconsp">@item.PRPrize/=</p>
+
+                            </div>
+                            <button class="addtocart" onclick="location.href='/Home/ProductPreview/@item.PRID'">
+                                <p class="">Details</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                i++;
+            }
+            if (i == 3)
+            {
+
+                break;
+            }
+        }
+
+    </div>
+    <button class="viewmore" onclick="location.href='/Home/ProductPage?category=Pizza'">
+        <p class="">
+            VIEW MORE
+            <i class="fa fa-arrow-right"></i>
+        </p>
+    </button>
+
+    <hr />
+
+    <h3 class="text-center mt-3">Burger</h3>
+    <div class="row">
+        @{
+             i = 0;
+        }
+        @foreach (var item in Model)
+        {
+            if (item.PRType.Equals("Burger"))
+            {
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall bg-gradient bg-opacity-75 rounded-bottom">
+                    <div class="Items">
+                        <img src="~/images/@item.PRImage">
+                        <div class="allthings">
+                            <p class="itemheading">@item.PRName<p>
+                            @*<p class="itemdes">@item.PRDescription.Substring(0, 10) </p>*@
+                            <div class="add d-inline-flex">
+                                <p class="addalliconsp">@item.PRPrize/=</p>
+
+                            </div>
+                            <button class="addtocart" onclick="location.href='/Home/ProductPreview/@item.PRID'">
+                                <p class="">Details</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                i++;
+            }
+            if (i == 3)
+            {
+
+                break;
+            }
+        }
+
+    </div>
+    <button class="viewmore" onclick="location.href='/Home/ProductPage?category=Burger'">
+        <p class="">
+            VIEW MORE
+            <i class="fa fa-arrow-right"></i>
+        </p>
+    </button>
+
+    <hr />
+
+    <h3 class="text-center mt-3">Dessert</h3>
+    <div class="row">
+        @{
+            i = 0;
+        }
+        @foreach (var item in Model)
+        {
+            if (item.PRType.Equals("Dessert"))
+            {
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall bg-gradient bg-opacity-75 rounded-bottom">
+                    <div class="Items">
+                        <img src="~/images/@item.PRImage">
+                        <div class="allthings">
+                            <p class="itemheading">@item.PRName<p>
+                            @*<p class="itemdes">@item.PRDescription.Substring(0, 10) .....</p>*@
+                            <div class="add d-inline-flex">
+                                <p class="addalliconsp">@item.PRPrize/=</p>
+
+                            </div>
+                            <button class="addtocart" onclick="location.href='/Home/ProductPreview/@item.PRID'">
+                                <p class="">Details</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                i++;
+            }
+            if (i == 3)
+            {
+
+                break;
+            }
+        }
+
+    </div>
+    <button class="viewmore" onclick="location.href='/Home/ProductPage?category=Dessert'">
+        <p class="">
+            VIEW MORE
+            <i class="fa fa-arrow-right"></i>
+        </p>
+    </button>
+
+    <hr />
+
+    <h3 class="text-center mt-3">Soft Drinks</h3>
+    <div class="row">
+        @{
+            i = 0;
+        }
+        @foreach (var item in Model)
+        {
+            if (item.PRType.Equals("Soft Drinks"))
+            {
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall bg-gradient bg-opacity-75 rounded-bottom">
+                    <div class="Items">
+                        <img src="~/images/@item.PRImage">
+                        <div class="allthings">
+                            <p class="itemheading">@item.PRName<p>
+                            @*<p class="itemdes">@item.PRDescription.Substring(0, 5) .....</p>*@
+                            <div class="add d-inline-flex">
+                                <p class="addalliconsp">@item.PRPrize/=</p>
+
+                            </div>
+                            <button class="addtocart" onclick="location.href='/Home/ProductPreview/@item.PRID'">
+                                <p class="">Details</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                i++;
+            }
+            if (i == 3)
+            {
+
+                break;
+            }
+        }
+    </div>
+    <button class="viewmore" onclick="location.href='/Home/ProductPage?category=Soft Drinks'">
+        <p class="">
+            VIEW MORE
+            <i class="fa fa-arrow-right"></i>
+        </p>
+    </button>
+
+</div>
+
+
+

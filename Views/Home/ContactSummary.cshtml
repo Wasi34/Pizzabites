@@ -1,0 +1,49 @@
+﻿@model List<Pizzabites.Models.ContactU>
+@{
+    ViewBag.Title = "Contact Summary";
+    @Styles.Render("~/Content/css");
+}
+
+<div class="container">
+    <div class="row">
+        <h2 class="mt-3 mb-4">ContactSummary</h2>
+    </div>
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <table class="table table-bordered ordertable">
+                <thead>
+                    <tr class="text-align-center">
+                        <th scope="col" class="orderhead" hidden>User ID</th>
+                        <th scope="col" class="orderhead">User Name</th>
+                        <th scope="col" class="orderhead">Email</th>
+                        <th scope="col" class="orderhead">Message</th>
+                        <th scope="col" class="orderhead">Admin Reply</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class='orderdatas' hidden>@item.ContactID</td>
+                            <td class='orderdatas'>@item.FullName</td>
+                            <td class='orderdatas'>@item.Email</td>
+                            <td class='orderdatas'>@item.ContactMessage</td>
+                            <td class='orderdatas'>@item.AdminReply</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.Noti != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Noti");
+        window.location.href = "Index";
+    };
+    </script>
+}

@@ -1,0 +1,87 @@
+﻿@model Pizzabites.Models.Product
+@{
+    ViewBag.Title = "Add Item";
+    @Styles.Render("~/Content/css");
+}
+<div class="container">
+    <br />
+    <script>
+        var loadFile = function (event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src)
+            }
+        };
+    </script>
+    <form method="post" action="../Admin/ItemAdd">
+
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div>
+                    <input type="file" id="file" name="PRImage"onchange="loadFile(event)">
+                    <img id="output" />
+                    <label for="file">
+                        <i class="fa fa-camera"></i>
+                        Choose a photo
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 text-success">
+                        @ViewBag.FileStatus
+                    </div>
+                </div>
+                <br />
+                <div class="form-group formbox mb-3">
+                    <label class="mb-3 formlabel">Name</label>
+                    <input type="text" placeholder="Product Name" name="PRName" value="" class="form-control" required>
+                    <br>
+                    <div class="form-group formbox mb-3">
+                        <label class="mb-3 formlabel">Description</label>
+                        <input type="text" placeholder="Product Description" name="PRDescription" value="" class="form-control" required>
+                    </div>
+
+                    <div class="form-group formbox mb-3">
+                        <label class="mb-3 formlabel">Type</label>
+                        <input type="text" placeholder="Set Type" name="PRType" value="" class="form-control mb-2" required>
+                    </div>
+                    <div class="form-group formbox mb-3">
+                        <label class="mb-3 formlabel">Prize</label>
+                        <input type="number" placeholder="Set Prize" name="PRPrize" value="" class="form-control mb-2" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="right-w3l">
+
+                <input type="submit" value="Add Item" class="btn btn-success btn-block" />
+
+            </div>
+
+
+        </div>
+    </form>
+    <br />
+    <form method="post" action="#">
+
+        <input type="submit" value="Edit Item" class="btn btn-info btn-block" />
+    </form>
+    <br />
+    <form method="post" action="#">
+
+        <input type="submit" value="Delete Item" class="btn btn-danger btn-block" />
+
+    </form>
+
+</div>
+@if (ViewBag.AdminLogin != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.AdminLogin");
+        window.location.href = "../Home/Index";
+    };
+    </script>
+}

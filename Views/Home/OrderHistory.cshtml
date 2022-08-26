@@ -1,0 +1,63 @@
+﻿@model List<Pizzabites.Models.OrderList>
+@{
+    ViewBag.Title = "OrderHistory";
+    @Styles.Render("~/Content/css")
+}
+
+<div class="container">
+    <div class="row">
+        <h2 class="mt-3 mb-4">Your Order History</h2>
+    </div>
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <table class="table table-bordered ordertable">
+                <thead>
+                    <tr class="text-align-center">
+                        @if (Session["CUSEmail"].ToString().Equals("Pizzabites@gmail.com"))
+                        {
+
+                            <th scope="col" class="orderhead">User Email</th>
+                        }
+                        <th scope="col" class="orderhead">Item Names</th>
+                        <th scope="col" class="orderhead">Price</th>
+                        <th scope="col" class="orderhead">Order Date</th>
+                        <th scope="col" class="orderhead">Delivery Location</th>
+                        @if (Session["CUSEmail"].ToString().Equals("Pizzabites@gmail.com"))
+                        {
+                            <th scope="col" class="orderhead">Confirm</th>
+                        }
+
+
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        @if (Session["CUSEmail"].ToString().Equals("Pizzabites@gmail.com"))
+                        {
+                            <td class='orderdatas'>@item.cusEmail</td>
+                        }
+                        <td class='orderdatas'>@item.itemName</td>
+                        <td class='orderdatas'>@item.totalPrice/=</td>
+                        <td class='orderdatas'>@item.orderDate</td>
+                        <td class='orderdatas'>@item.cusAddress</td>
+                        @if (Session["CUSEmail"].ToString().Equals("Pizzabites@gmail.com"))
+                        {
+                            <td>
+                                <form action="#" method='POST'>
+                                    @*<input name="OrderID" value="@item.OrderID" hidden />*@
+                                    <button name='' type="submit" class='plusMinusButton'> View </button>
+                                </form>
+                            </td>
+                        }
+
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

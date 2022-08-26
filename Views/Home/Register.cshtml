@@ -1,0 +1,75 @@
+﻿@model Pizzabites.Models.Customer
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript">
+    addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+</script>
+<!-- Meta tag Keywords -->
+<!-- css files -->
+<link rel="stylesheet" href="~/Content/css/Signin_style.css" type="text/css" media="all" />
+<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+
+<div class="main-content-agile">
+    <div class="sub-main-w3">
+
+        <h2>Register Here</h2>
+
+      
+        <form action="" method="POST">
+            <div class="col-md-40">
+                <input type="text" placeholder="Name" class="form-control" id="UserName" name="CUSName" required>
+            </div>
+
+            <br />
+            <div class="col-md-40">
+                <input type="email" placeholder="Email" class="form-control" id="UserEmail" name="CUSEmail" required>
+            </div>
+
+            <br />
+
+
+            <div class="col-md-40">
+                <input type="text" placeholder="Contact Number" class="form-control" id="UserPhNum" name="CUSContactNo" required>
+            </div>
+
+
+            <br />
+
+            <div class="col-md-40">
+                <input type="password" placeholder="Password" class="form-control" id="UserPassword" name="CUSPassword" required>
+            </div>
+            <br />
+
+            <div class="right-w3l">
+                <br />
+                <input type="submit" value="Sign Up">
+            </div>
+            <br />
+            <a href="/Home/Login" class="text-white btn-success ">Back to Login</a>
+            <br />
+            <center>
+                <div class="p-3 mb-2  text-danger">
+
+                    <label>@ViewBag.Notification</label>
+                </div>
+            </center>
+
+
+
+        </form>
+    </div>
+    </div>
+

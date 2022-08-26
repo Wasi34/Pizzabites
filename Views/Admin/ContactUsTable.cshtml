@@ -1,0 +1,85 @@
+﻿@model List<Pizzabites.Models.ContactU>
+@{
+    ViewBag.Title = "Contact Messages";
+    @Styles.Render("~/Content/css");
+}
+
+
+<div class="container">
+    <div class="row">
+        <h2 class="mt-3 mb-4">ContactUsTable</h2>
+    </div>
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <form action="/Home/ContactSummary" method='POST'>
+                <div>
+                    <button type="submit" class="btn btn-info"> Message Summary </button>
+                </div>
+            </form>
+            <br />
+            <table class="table table-bordered ordertable">
+                <thead>
+                    <tr class="text-align-center">
+                        <th scope="col" class="orderhead" hidden>User ID</th>
+                        <th scope="col" class="orderhead">User Name</th>
+                        <th scope="col" class="orderhead">Email</th>
+                        <th scope="col" class="orderhead">Message</th>
+                        <th scope="col" class="orderhead">Remove</th>
+                        <th scope="col" class="orderhead">Reply</th>
+
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class='orderdatas' hidden>@item.ContactID</td>
+                            <td class='orderdatas'>@item.FullName</td>
+                            <td class='orderdatas'>@item.Email</td>
+                            <td class='orderdatas'>@item.ContactMessage</td>
+                            <td>
+                                <form action="../Admin/RemoveContact" method='POST'>
+                                    <input name="ContactID" value="@item.ContactID" hidden />
+                                    <button name='' type="submit" class='plusMinusButton'> Remove </button>
+                                </form>
+                            <td>
+
+                                <form action="../Admin/AdminContact" method='POST'>
+                                    <div class="form-group mb-3">
+
+                                        <input name="ContactID" value="@item.ContactID" hidden />
+                                        <input class="form-control mr-sm-2" type="text" name="AdminReply" id="AdminReply" placeholder="Reply Message" aria-label="Reply" required>
+
+                                    </div>
+                                    <button name='' type="submit" class='plusMinusButton'> Send </button>
+
+                                </form>
+                            </td>
+
+
+
+
+
+
+
+                        </tr>
+
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+@if (ViewBag.AdminLogin != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.AdminLogin");
+            window.location.href = "../Home/Index";
+        };
+    </script>
+}

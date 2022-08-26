@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+
+/* .welcome{
+    font-family: oswald;
+    font-size: 30rem;
+    text-align: center;
+    color: #fff;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+} */
+.welcome{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .welcome h1 {
+    text-align: center;
+    font-style: bold;
+    font-size: 4rem;
+    color:rgb(0, 0, 0);
+    font-family: "oswald";
+    transition: 0.3s;
+    font-weight: 500;
+    padding: 20px;
+    margin: 15px;
+    z-index: 1;
+    opacity: 0.9;
+  }
+ 
+  .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  .color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.6;
+  }
+/* #vidBG{
+    
+   position: absolute;
+   width: 100%;
+   height: auto;
+   z-index: -1;
+} */
+
+body {
+    background-color:whitesmoke
+}
+
+.card {
+    cursor: pointer
+}
+
+.hd {
+    font-size: 25px;
+    font-weight: 550
+}
+
+.card.hover,
+.card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .2)
+}
+
+.img {
+    margin-bottom: 35px;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222)
+}
+
+.card-title {
+    font-weight: 600
+}
+
+button.focus,
+button:focus {
+    outline: 0;
+    box-shadow: none !important
+}
+
+.ft {
+    margin-top: 25px
+}
+
+.chk {
+    margin-bottom: 5px
+}
+
+.rck {
+    margin-top: 20px;
+    padding-bottom: 15px
+}

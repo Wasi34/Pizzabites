@@ -1,0 +1,73 @@
+﻿@model Pizzabites.Models.ContactU
+@{
+    ViewBag.Title = "ContactUs";
+    @Styles.Render("~/Content/css")
+
+}
+<div class="bodybg">
+    <div>
+        <h1 class="headcontact">Contact Us</h1>
+    </div>
+    <div class="container">
+        <div class="contact">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="Incontact">
+                        <div class="">
+                            <div>
+                                <h2 class="mt-5 text-align-center contactemail">Email</h2>
+                                <p class="contactwrite">Pizzabites@gmail.com</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mt-5">
+                                <h2 class="contactemail">Contact No.</h2>
+                                <p class="contactwrite">+8801770620552</p>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <form method="post">
+                        <div class="form-group mt-5 mb-3">
+                            <label class="mb-2">Full Name</label>
+                            <input type="text" name="FullName" class="form-control" placeholder="" value="@Model.FullName" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="mb-2">Email</label>
+                            <input type="email" name="Email" class="form-control" placeholder="" value="@Model.Email" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="mb-2">Message</label>
+                            <textarea class="form-control cotext" name="ContactMessage" id="floatingTextarea" placeholder="What's your say ?" required></textarea>
+                        </div>
+                        <div >
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>      
+                    <br />
+                    <form action="/Home/ContactSummary" method='POST'>
+                        <div>
+                            <button type="submit" class="btn btn-info">Message Summary</button>
+                        </div>
+                    </form>
+
+                </div>                   
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@if (ViewBag.Noti != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Noti");
+        window.location.href = "Index";
+    };
+    </script>
+}
