@@ -1,5 +1,4 @@
-Pizzabites is an E-Commerce ASP.NET MVC based website for ordering food where customers can choose from items from different restaurants
-and order from home.
+Pizzabites is an E-Commerce ASP.NET MVC based website for ordering food where customers can order food from home.
 
 Manager's Side:
 • Registration and Login 
