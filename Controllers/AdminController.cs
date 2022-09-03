@@ -123,18 +123,18 @@ namespace Pizzabites.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult ManageOrder(OrderList orderlist, FormCollection form)
-        {
-            string x = form["DeliveryBoy"];
-            OrderList order = db.OrderLists.Where(temp => temp.OrderID.Equals(orderlist.OrderID)).SingleOrDefault();
+        //[HttpPost]
+        //public ActionResult ManageOrder(OrderList orderlist, FormCollection form)
+        //{
+        //    string x = form["DeliveryBoy"];
+        //    OrderList order = db.OrderLists.Where(temp => temp.OrderID.Equals(orderlist.OrderID)).SingleOrDefault();
            
-            db.SaveChanges();
-            order.DeliveryBoy= form["DeliveryBoy"];
-            db.OrderLists.Add(order);
-            db.SaveChanges();
-            return RedirectToAction("ManageOrder");
-        }
+        //    db.SaveChanges();
+        //    order.DeliveryBoy= form["DeliveryBoy"];
+        //    db.OrderLists.Add(order);
+        //    db.SaveChanges();
+        //    return RedirectToAction("ManageOrder");
+        //}
 
         //public ActionResult ManageOrder(String DeliveryBoy, String DeliveryBoyPhoneNumber, String DeliveryTime, String Confirmation)
         //{

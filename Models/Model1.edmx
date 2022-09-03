@@ -45,10 +45,6 @@
           <Property Name="cusAddress" Type="varchar" MaxLength="500" />
           <Property Name="orderDate" Type="datetime" />
           <Property Name="PaymentMethod" Type="varchar" MaxLength="20" />
-          <Property Name="DeliveryBoy" Type="varchar" MaxLength="20" />
-          <Property Name="DeliveryBoyPhoneNumber" Type="varchar" MaxLength="11" />
-          <Property Name="DeliveryTime" Type="varchar" MaxLength="20" />
-          <Property Name="Confirmation" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -113,10 +109,6 @@
           <Property Name="cusAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="orderDate" Type="DateTime" Precision="3" />
           <Property Name="PaymentMethod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="DeliveryBoy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="DeliveryBoyPhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-          <Property Name="DeliveryTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Confirmation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -184,10 +176,6 @@
                 <ScalarProperty Name="cusAddress" ColumnName="cusAddress" />
                 <ScalarProperty Name="orderDate" ColumnName="orderDate" />
                 <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
-                <ScalarProperty Name="DeliveryBoy" ColumnName="DeliveryBoy" />
-                <ScalarProperty Name="DeliveryBoyPhoneNumber" ColumnName="DeliveryBoyPhoneNumber" />
-                <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />
-                <ScalarProperty Name="Confirmation" ColumnName="Confirmation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

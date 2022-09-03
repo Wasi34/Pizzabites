@@ -21,9 +21,5 @@ namespace Pizzabites.Models
         public string cusAddress { get; set; }
         public Nullable<System.DateTime> orderDate { get; set; }
         public string PaymentMethod { get; set; }
-        public string DeliveryBoy { get; set; }
-        public string DeliveryBoyPhoneNumber { get; set; }
-        public string DeliveryTime { get; set; }
-        public string Confirmation { get; set; }
     }
 }
