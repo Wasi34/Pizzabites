@@ -43,10 +43,10 @@
                             <label class="mb-2">Message</label>
                             <textarea class="form-control cotext" name="ContactMessage" id="floatingTextarea" placeholder="What's your say ?" required></textarea>
                         </div>
-                        <div >
+                        <div>
                             <button type="submit" class="btn btn-success">Submit</button>
                         </div>
-                    </form>      
+                    </form>
                     <br />
                     <form action="/Home/ContactSummary" method='POST'>
                         <div>
@@ -54,7 +54,7 @@
                         </div>
                     </form>
 
-                </div>                   
+                </div>
             </div>
         </div>
     </div>
@@ -62,12 +62,12 @@
 
 
 
-@if (ViewBag.Noti != null)
+@if (ViewBag.UserLogin != null)
 {
     <script type="text/javascript">
-    window.onload = function () {
-        alert("@ViewBag.Noti");
-        window.location.href = "Index";
-    };
+        window.onload = function () {
+            alert("@ViewBag.UserLogin");
+            window.location.href = "../Home/Index";
+        };
     </script>
 }

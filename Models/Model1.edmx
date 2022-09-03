@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PizzabitesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PizzabitesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="CommentID" />
@@ -39,11 +39,16 @@
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="itemName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="itemName" Type="varchar" MaxLength="500" />
           <Property Name="totalPrice" Type="int" />
-          <Property Name="cusEmail" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="cusAddress" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="orderDate" Type="datetime" Nullable="false" />
+          <Property Name="cusEmail" Type="varchar" MaxLength="500" />
+          <Property Name="cusAddress" Type="varchar" MaxLength="500" />
+          <Property Name="orderDate" Type="datetime" />
+          <Property Name="PaymentMethod" Type="varchar" MaxLength="20" />
+          <Property Name="DeliveryBoy" Type="varchar" MaxLength="20" />
+          <Property Name="DeliveryBoyPhoneNumber" Type="varchar" MaxLength="11" />
+          <Property Name="DeliveryTime" Type="varchar" MaxLength="20" />
+          <Property Name="Confirmation" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -51,7 +56,7 @@
           </Key>
           <Property Name="PRID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PRName" Type="varchar" MaxLength="50" />
-          <Property Name="PRImage" Type="varchar" MaxLength="200" />
+          <Property Name="PRImage" Type="nvarchar" MaxLength="200" />
           <Property Name="PRType" Type="varchar" MaxLength="20" />
           <Property Name="PRDescription" Type="varchar" MaxLength="8000" />
           <Property Name="PRPrize" Type="decimal" Precision="8" Scale="2" />
@@ -63,7 +68,8 @@
           <EntitySet Name="OrderList" EntityType="Self.OrderList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PizzabitesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -101,11 +107,16 @@
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="itemName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="itemName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="totalPrice" Type="Int32" />
-          <Property Name="cusEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="orderDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="cusAddress" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="cusEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="cusAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="orderDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryBoy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryBoyPhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Confirmation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -113,7 +124,7 @@
           </Key>
           <Property Name="PRID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PRName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PRImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PRImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="PRType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="PRDescription" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="PRPrize" Type="Decimal" Precision="8" Scale="2" />
@@ -166,12 +177,17 @@
           <EntitySetMapping Name="OrderLists">
             <EntityTypeMapping TypeName="PizzabitesModel.OrderList">
               <MappingFragment StoreEntitySet="OrderList">
-                <ScalarProperty Name="cusAddress" ColumnName="cusAddress" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="itemName" ColumnName="itemName" />
                 <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
                 <ScalarProperty Name="cusEmail" ColumnName="cusEmail" />
+                <ScalarProperty Name="cusAddress" ColumnName="cusAddress" />
                 <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="DeliveryBoy" ColumnName="DeliveryBoy" />
+                <ScalarProperty Name="DeliveryBoyPhoneNumber" ColumnName="DeliveryBoyPhoneNumber" />
+                <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />
+                <ScalarProperty Name="Confirmation" ColumnName="Confirmation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

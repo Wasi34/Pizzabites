@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
 using Pizzabites.Models;
+using System.Data.Entity.Validation;
 
 namespace Pizzabites.Controllers
 {
@@ -120,6 +121,41 @@ namespace Pizzabites.Controllers
             db.SaveChanges();
             return RedirectToAction("AddItem");
         }
-      
+
+
+        [HttpPost]
+        public ActionResult ManageOrder(OrderList orderlist, FormCollection form)
+        {
+            string x = form["DeliveryBoy"];
+            OrderList order = db.OrderLists.Where(temp => temp.OrderID.Equals(orderlist.OrderID)).SingleOrDefault();
+           
+            db.SaveChanges();
+            order.DeliveryBoy= form["DeliveryBoy"];
+            db.OrderLists.Add(order);
+            db.SaveChanges();
+            return RedirectToAction("ManageOrder");
+        }
+
+        //public ActionResult ManageOrder(String DeliveryBoy, String DeliveryBoyPhoneNumber, String DeliveryTime, String Confirmation)
+        //{
+
+
+        //    OrderList orderlist = new OrderList();
+        //    orderlist.DeliveryBoy = DeliveryBoy;
+        //    orderlist.DeliveryBoyPhoneNumber = DeliveryBoyPhoneNumber;
+        //    orderlist.DeliveryTime = DeliveryTime;
+        //    orderlist.Confirmation = Confirmation;
+
+        //    OrderList orderList = db.OrderLists.Where(temp => temp.OrderID.Equals(orderlist.OrderID)).SingleOrDefault();
+
+        //    db.OrderLists.Add(orderlist);
+        //    db.SaveChanges();
+
+
+
+        //    return RedirectToAction("ManageOrder");
+        //}
+
+
     }
 }

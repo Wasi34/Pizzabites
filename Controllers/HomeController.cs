@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Text.RegularExpressions;
 using Pizzabites.Models;
 
 namespace Pizzabites.Controllers
@@ -36,19 +37,33 @@ namespace Pizzabites.Controllers
         {
             if (!(customer.CUSEmail.EndsWith(".com") || customer.CUSEmail.EndsWith(".edu")))
             {
-                ViewBag.Notification = "Email Format Incorrect";
+                ViewBag.Notification = "Email Format Incorrect.";
                 return View();
-            }
-            System.Diagnostics.Debug.WriteLine(customer.CUSContactNo.Length);
+            }else if(!Regex.IsMatch(customer.CUSContactNo, @"^\d+$"))
+            {
+                ViewBag.Notification = "Contact Number can not contain letters";
+                return View();
 
-            if (customer.CUSContactNo.Length != 11 || !customer.CUSContactNo.StartsWith("01"))
+            }
+            else if (customer.CUSContactNo.Length != 11 || !customer.CUSContactNo.StartsWith("01"))
             {
-                ViewBag.Notification = "Contact Number is invalid";
+                ViewBag.Notification = "Contact Number must be 11 digit.";
                 return View();
             }
-            if (db.Customers.Any(x => x.CUSEmail == customer.CUSEmail || x.CUSName == customer.CUSName))
+            else if (customer.CUSPassword.Length<6)
             {
-                ViewBag.Notification = "This account already exists";
+                ViewBag.Notification = "Password must be 6 characters long.";
+                return View();
+
+            }
+            else if (db.Customers.Any(x => x.CUSEmail == customer.CUSEmail ))
+            {
+                ViewBag.Notification = "This account already exists.";
+                return View();
+            }
+            else if (db.Customers.Any(x => x.CUSEmail == "Pizzabites@gmail.com"))
+            {
+                ViewBag.Notification = "Try another email.";
                 return View();
             }
             else
@@ -114,16 +129,19 @@ namespace Pizzabites.Controllers
         [HttpPost]
         public ActionResult CommentPost(String ProductID, string CommentMessage)
         {
-            int id = Int32.Parse(ProductID);
-            Comment comment = new Comment
-            {
-                ProductID = id,
-                CommentMessage = CommentMessage,
-                CustName = Session["CUSName"].ToString()
-            };
-            db.Comments.Add(comment);
-            db.SaveChanges();
-            return RedirectToAction("ProductPreview/" + ProductID);
+           
+            
+                int id = Int32.Parse(ProductID);
+                Comment comment = new Comment
+                {
+                    ProductID = id,
+                    CommentMessage = CommentMessage,
+                    CustName = Session["CUSName"].ToString()
+                };
+                db.Comments.Add(comment);
+                db.SaveChanges();
+                return RedirectToAction("ProductPreview/" + ProductID);
+            
         }
 
         public ActionResult ProductPage(string category, string page)
@@ -170,128 +188,171 @@ namespace Pizzabites.Controllers
 
         public ActionResult ContactUs()
         {
+            if (Session["CUSEmail"] == null)
+            {
+                ViewBag.UserLogin = "Log in first";
+               
+            }
+
             ContactU contactUs = new ContactU();
-            System.Diagnostics.Debug.WriteLine(contactE);
-            if (contactE == 1)
-            {
-                contactE = 0;
-                ViewBag.Noti = "Email Format Incorrect";
-            }
-            if (Session["CUSName"] != null)
-            {
-                string email = Session["CUSEmail"].ToString();
-                Customer customer = db.Customers.Where(temp => temp.CUSEmail.Equals(email)).SingleOrDefault();
-                contactUs.Email = customer.CUSEmail;
-                contactUs.FullName = customer.CUSName;
-            }
-            else
-            {
-                contactUs.Email = "";
-                contactUs.FullName = "";
-            }
-            return View(contactUs);
+                System.Diagnostics.Debug.WriteLine(contactE);
+                if (contactE == 1)
+                {
+                    contactE = 0;
+                    ViewBag.Noti = "Email Format Incorrect";
+                }
+                if (Session["CUSName"] != null)
+                {
+                    string email = Session["CUSEmail"].ToString();
+                    Customer customer = db.Customers.Where(temp => temp.CUSEmail.Equals(email)).SingleOrDefault();
+                    contactUs.Email = customer.CUSEmail;
+                    contactUs.FullName = customer.CUSName;
+                }
+                else
+                {
+                    contactUs.Email = "";
+                    contactUs.FullName = "";
+                }
+                return View(contactUs);
+            
         }
 
         [HttpPost]
         public ActionResult ContactSummary()
         {
-            List<ContactU> contacts;
-            var sql = "";
-            ContactU contactUs = new ContactU();
-           // System.Diagnostics.Debug.WriteLine(contactE);
-
-            if (Session["CUSName"] != null)
+            if (Session["CUSEmail"] == null)
             {
-                string email = email = Session["CUSEmail"].ToString(); ;
-                if (email.Equals("Pizzabites@gmail.com"))
-                {
-                    sql = "Select * from ContactUs";
-                }
-                else
-                {
-                    sql = "Select * from ContactUs where Email = '" + email + "' ";
-                }
+                ViewBag.UserLogin = "Log in first";
+                return RedirectToAction("Index");
             }
-            contacts = db.ContactUs.SqlQuery(sql).ToList();
+            else
+            {
+                List<ContactU> contacts;
+                var sql = "";
+                ContactU contactUs = new ContactU();
+                // System.Diagnostics.Debug.WriteLine(contactE);
 
-            return View(contacts);
+                if (Session["CUSName"] != null)
+                {
+                    string email = email = Session["CUSEmail"].ToString(); ;
+                    if (email.Equals("Pizzabites@gmail.com"))
+                    {
+                        sql = "Select * from ContactUs";
+                    }
+                    else
+                    {
+                        sql = "Select * from ContactUs where Email = '" + email + "' ";
+                    }
+                }
+                contacts = db.ContactUs.SqlQuery(sql).ToList();
+
+                return View(contacts);
+            }
         }
 
         [HttpPost]
         public ActionResult ContactUs(ContactU contactU)
         {
-            if (!(contactU.Email.EndsWith(".com") || contactU.Email.EndsWith(".edu")))
+            if (Session["CUSEmail"] == null)
             {
-                contactE = 1;
+                ViewBag.UserLogin = "Log in first";
+                return RedirectToAction("Index");
             }
             else
             {
-                db.ContactUs.Add(contactU);
-                db.SaveChanges();
+                if (!(contactU.Email.EndsWith(".com") || contactU.Email.EndsWith(".edu")))
+                {
+                    contactE = 1;
+                }
+                else
+                {
+                    db.ContactUs.Add(contactU);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("ContactUs");
             }
-            return RedirectToAction("ContactUs");
+
         }
-
-
         public ActionResult CustomerProfile()
         {
             if (Session["CUSEmail"] == null)
             {
-                ViewBag.NoUser = "User Needs to Log In";
-                Session["CUSEmail"] = "abc";
+                ViewBag.UserLogin = "Log in first";
+                return RedirectToAction("Index");
             }
-            //System.Diagnostics.Debug.WriteLine(Session["CUSName"]);
-            string username = Session["CUSEmail"].ToString();
-            Customer customer = db.Customers.Where(temp => temp.CUSEmail.Equals(username)).SingleOrDefault();
+            else
+            {
+                //System.Diagnostics.Debug.WriteLine(Session["CUSName"]);
+                string username = Session["CUSEmail"].ToString();
+                Customer customer = db.Customers.Where(temp => temp.CUSEmail.Equals(username)).SingleOrDefault();
 
-            return View(customer);
+                return View(customer);
+            }
         }
 
         [HttpPost]
         public ActionResult UpdateProfile(Customer customer)
         {
-            customer.CUSEmail = Session["CUSEmail"].ToString();
-            db.Entry(customer).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-            Session["CUSName"] = customer.CUSName;
-            return RedirectToAction("CustomerProfile");
+            
+                customer.CUSEmail = Session["CUSEmail"].ToString();
+                db.Entry(customer).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                Session["CUSName"] = customer.CUSName;
+                return RedirectToAction("CustomerProfile");
+            
         }
 
         public ActionResult AddToCart(int id)
         {
-
-            bool flag = true;
-            foreach (var item in CartItems)
+            if (Session["CUSEmail"] == null)
             {
-                if (item.Equals(id))
-                {
-                    flag = false;
-                }
-            }
-            if (flag)
-            {
-                CartItems.Add(id);
-                ViewBag.AddedItem = "Product Added to Cart";
+                ViewBag.UserLogin = "Log in first";
+                return RedirectToAction("Index");
             }
             else
             {
-                ViewBag.AddedItem = "Item Already in Cart";
+
+                bool flag = true;
+                foreach (var item in CartItems)
+                {
+                    if (item.Equals(id))
+                    {
+                        flag = false;
+                    }
+                }
+                if (flag)
+                {
+                    CartItems.Add(id);
+                    ViewBag.AddedItem = "Product Added to Cart";
+                }
+                else
+                {
+                    ViewBag.AddedItem = "Item Already in Cart";
+                }
+                return RedirectToAction("Orders");
             }
-            return RedirectToAction("Orders");
         }
 
         public ActionResult Orders()
         {
-            List<Product> products = new List<Product>();
-
-            foreach (var item in CartItems)
+            if (Session["CUSEmail"] == null)
             {
-                products.Add(db.Products.Where(temp => temp.PRID.Equals(item)).SingleOrDefault());
+                ViewBag.UserLogin = "Log in first";
+                return RedirectToAction("Index");
             }
-          
-            return View(products);
+            else
+            {
+                List<Product> products = new List<Product>();
+
+                foreach (var item in CartItems)
+                {
+                    products.Add(db.Products.Where(temp => temp.PRID.Equals(item)).SingleOrDefault());
+                }
+
+                return View(products);
+            }
         }
-        public ActionResult ConfirmOrder(int? totalvalue,String AdressDetails)
+        public ActionResult ConfirmOrder(int? totalvalue,String AdressDetails,String PaymentMethod)
         {
             
             OrderList orderlist = new OrderList();
@@ -299,6 +360,8 @@ namespace Pizzabites.Controllers
             orderlist.orderDate = DateTime.Now;
             orderlist.totalPrice = totalvalue;
             orderlist.cusAddress = AdressDetails;
+            orderlist.PaymentMethod=PaymentMethod;
+
 
             string items = "";
             Product prod;
@@ -306,7 +369,7 @@ namespace Pizzabites.Controllers
             foreach (var item in CartItems)
             {
                 prod = db.Products.Where(temp => temp.PRID.Equals(item)).SingleOrDefault();
-                items = items + prod.PRName + " ";
+                items = items + prod.PRName + "";
             }
 
             orderlist.itemName = items;
@@ -324,6 +387,7 @@ namespace Pizzabites.Controllers
          
             return RedirectToAction("OrderHistory");
         }
+      
 
         public ActionResult RemoveFromCart(Product product)
         {
@@ -337,22 +401,30 @@ namespace Pizzabites.Controllers
 
         public ActionResult OrderHistory()
         {
-            List<OrderList> orderList;
-
-            if (Session["CUSEmail"].ToString().Equals("Pizzabites@gmail.com"))
+            if (Session["CUSEmail"] == null)
             {
-                orderList = db.OrderLists.ToList();
-
-
+                ViewBag.UserLogin = "Log in first";
+                return RedirectToAction("Index");
             }
             else
             {
-                string email = Session["CUSEmail"].ToString();
 
-                orderList = db.OrderLists.Where(temp => temp.cusEmail.Equals(email)).ToList();
+                List<OrderList> orderList;
+
+                if (Session["CUSEmail"].ToString().Equals("Pizzabites@gmail.com"))
+                {
+                    orderList = db.OrderLists.ToList();
+
+                }
+                else
+                {
+                    string email = Session["CUSEmail"].ToString();
+
+                    orderList = db.OrderLists.Where(temp => temp.cusEmail.Equals(email)).ToList();
+                }
+
+                return View(orderList);
             }
-
-            return View(orderList);
         }
 
         [HttpPost]

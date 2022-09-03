@@ -38,9 +38,7 @@
                     <div class="col-6 col-xl-6 col-lg-6 col-sm-12 col-md-6">
                         <button type="submit" class="btn-success rounded-bottom rounded-top w-100 h-100 pt-2 pb-2">Update Profile</button>
                     </div>
-                    @*<div class="col-6 col-xl-6 col-lg-6 col-sm-12 col-md-6">
-                            <button type="submit" class="btn-danger rounded-bottom rounded-top w-100 h-100 pt-2 pb-2">Edit</button>
-                        </div>*@
+                   
                 </div>
             </form>
         </div>
@@ -48,12 +46,12 @@
 </div>
 
 
-@if (ViewBag.NoUser != null)
+@if (ViewBag.UserLogin != null)
 {
     <script type="text/javascript">
-    window.onload = function () {
-        alert("@ViewBag.NoUser");
-        window.location.href = "Login";
-    };
+        window.onload = function () {
+            alert("@ViewBag.UserLogin");
+            window.location.href = "../Home/Index";
+        };
     </script>
 }

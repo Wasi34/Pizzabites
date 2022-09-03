@@ -4,7 +4,7 @@
     @Styles.Render("~/Content/css")
 }
 
-<div class="container">
+
     <div class="row">
         <h2 class="mt-3 mb-4">Your Order History</h2>
     </div>
@@ -21,43 +21,99 @@
                         <th scope="col" class="orderhead">Item Names</th>
                         <th scope="col" class="orderhead">Price</th>
                         <th scope="col" class="orderhead">Order Date</th>
+                        <th scope="col" class="orderhead">Payment Method</th>
                         <th scope="col" class="orderhead">Delivery Location</th>
+                        <th scope="col" class="orderhead">Delivery Boy Name</th>
+                        <th scope="col" class="orderhead">Delivery Boy Phone Number</th>
+                        <th scope="col" class="orderhead">Delivery Time</th>
+                        <th scope="col" class="orderhead">Order Status</th>
                         @if (Session["CUSEmail"].ToString().Equals("Pizzabites@gmail.com"))
                         {
-                            <th scope="col" class="orderhead">Confirm</th>
+
+                            <th scope="col" class="orderhead">Update</th>
                         }
-
-
                     </tr>
                 </thead>
                 <tbody class="text-center">
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        @if (Session["CUSEmail"].ToString().Equals("Pizzabites@gmail.com"))
-                        {
-                            <td class='orderdatas'>@item.cusEmail</td>
-                        }
-                        <td class='orderdatas'>@item.itemName</td>
-                        <td class='orderdatas'>@item.totalPrice/=</td>
-                        <td class='orderdatas'>@item.orderDate</td>
-                        <td class='orderdatas'>@item.cusAddress</td>
-                        @if (Session["CUSEmail"].ToString().Equals("Pizzabites@gmail.com"))
-                        {
-                            <td>
-                                <form action="#" method='POST'>
-                                    @*<input name="OrderID" value="@item.OrderID" hidden />*@
-                                    <button name='' type="submit" class='plusMinusButton'> View </button>
-                                </form>
-                            </td>
-                        }
+                        <tr>
+                            @if (Session["CUSEmail"].ToString().Equals("Pizzabites@gmail.com"))
+                            {
+                                <td class='orderdatas'>@item.cusEmail</td>
+                            }
+                            <td class='orderdatas'>@item.itemName</td>
+                            <td class='orderdatas'>@item.totalPrice/=</td>
+                            <td class='orderdatas'>@item.orderDate</td>
+                            <td class='orderdatas'>@item.PaymentMethod</td>
+                            <td class='orderdatas'>@item.cusAddress</td>
+                            @if (!Session["CUSEmail"].ToString().Equals("Pizzabites@gmail.com"))
+                            {
+                                <td class='orderdatas'>@item.DeliveryBoy</td>
+                                <td class='orderdatas'>@item.DeliveryBoyPhoneNumber</td>
+                                <td class='orderdatas'>@item.DeliveryTime</td>
+                                <td class='orderdatas'>@item.Confirmation</td>
+                            }
+                            @if (Session["CUSEmail"].ToString().Equals("Pizzabites@gmail.com"))
+                            {
+                                <form action="~/Admin/ManageOrder" method="post">
+                                    <input name="ContactID" value="@item.OrderID" hidden />
+<td class='orderdatas'>
+                                    @item.DeliveryBoy
 
-                    </tr>
+                                    <div class="mb-4 mt-2 userprofilecontents">
+                                   <input type="text" name="DeliveryBoy" class="form-control userformholders" required />
+                                    </div>
+
+                                </td>
+                                <td class='orderdatas'>
+                                    @item.DeliveryBoyPhoneNumber
+                                    <div class="mb-4 mt-2 userprofilecontents">
+                                       
+                                        <input type="text" name="DeliveryBoyPhoneNumber" class="form-control userformholders" required />
+                                    </div>
+                                </td>
+                                <td class='orderdatas'>
+                                    @item.DeliveryTime
+                                    <div class="mb-4 mt-2 userprofilecontents">
+                                       
+                                        <input type="text" name="DeliveryTime" class="form-control userformholders" required />
+                                    </div>
+                                </td>
+                                <td class='orderdatas'>
+                                    @item.Confirmation
+                                    <select name="Confirmation">
+
+                                        <option>Order Confirmed</option>
+                                        <option>Preparing your Order</option>
+                                        <option>Your order is on the way</option>
+                                        <option>Order Delivered</option>
+                                        <option>Order Cancelled</option>
+
+                                    </select>
+                                </td>
+                                <td>
+                                    <button name='UpdateButton' type="submit" class='plusMinusButton'>Update</button>
+                                </td>
+        
+                                </form>
+                            }
+
+                        </tr>
                     }
 
                 </tbody>
             </table>
         </div>
     </div>
-</div>
 
+
+@if (ViewBag.UserLogin!= null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.UserLogin");
+            window.location.href = "../Home/Index";
+        };
+    </script>
+}

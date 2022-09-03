@@ -29,7 +29,7 @@ SELECT * FROM Customer
 truncate table customer
 
 Insert into Customer(CUSEmail,CUSName,CUSPassword) 
-Values('Wasi34@gmail.com','Wasi','wasi34')
+Values('wasi34@gmail.com','Wasi','wasi34')
 
 truncate table customer
 
@@ -85,16 +85,23 @@ drop table ContactUs
 
 Create table OrderList(
 	OrderID int primary key identity(1,1),
-	itemName varchar(500) NOT NULL,
+	itemName varchar(500),
 	totalPrice int ,
-	cusEmail varchar(500) Not Null,
-	cusAddress varchar(500) Not Null,
-	orderDate datetime Not Null
+	cusEmail varchar(500),
+	cusAddress varchar(500),
+	orderDate datetime ,
+	PaymentMethod varchar(20),
+	DeliveryBoy varchar(20),
+	DeliveryBoyPhoneNumber varchar(11),
+	DeliveryTime varchar(20),
+	Confirmation varchar(20)
 )
 
 drop table OrderList
 truncate table orderlist
 select * from OrderList
+
+truncate table OrderList
 
 Create table Comment(
 CommentID int primary key identity(100,1),

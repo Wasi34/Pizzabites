@@ -38,12 +38,12 @@
     </div>
 </div>
 
-@if (ViewBag.Noti != null)
+@if (ViewBag.UserLogin != null)
 {
     <script type="text/javascript">
-    window.onload = function () {
-        alert("@ViewBag.Noti");
-        window.location.href = "Index";
-    };
+        window.onload = function () {
+            alert("@ViewBag.UserLogin");
+            window.location.href = "../Home/Index";
+        };
     </script>
 }

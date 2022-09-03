@@ -588,6 +588,7 @@
     <Content Include="Views\Home\Orders.cshtml" />
     <Content Include="Views\Home\ProductSearch.cshtml" />
     <Content Include="Views\Home\ContactSummary.cshtml" />
+    <Content Include="Views\Home\OrderManage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -51,15 +51,26 @@
         <form action="/Home/ConfirmOrder" method="POST">
             <div class="col-xl-3 mb-4 pb-3">
                 <div class="border bd-light rounded p-4 orderdatas d-flex flex-column align-items-center">
-                    <h5>Grand Total:</h5>
-                    <h3 class="text-center orderdatas" id="gtotal"></h3>
+                    <h5 class="text-warning">Grand Total:</h5>
+                    <h3 class="text-info" id="gtotal"></h3>
                     <br />
                     <div class="form-group mb-3">
 
                         <textarea class="form-control cotext" name="AdressDetails" id="floatingTextarea" placeholder="Enter delivery location" required></textarea>
                     </div>
+
                     <input type='hidden' name="totalvalue" id="finalTotal" value='' required>
 
+                    <p class="text-warning">Payment Method</p>
+                    <select name="PaymentMethod">
+
+                        <option>Bkash</option>
+                        <option>Nagad</option>
+                        <option>Cash Payment</option>
+                    </select>
+                    <br />
+                    <p class="text-success">Our Bkash & Nagad Number: 01770620552</p>
+                    <br />
                     <button type="submit" name="submitButton" id="submit" value="" class="plusMinusButton">Confirm Order</button>
 
                     @if (ViewBag.Orders != null)
@@ -116,6 +127,15 @@
                window.onload = function () {
            alert("@ViewBag.Orders");
             window.location.href = "Index";
+        };
+    </script>
+}
+@if (ViewBag.UserLogin != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.UserLogin");
+            window.location.href = "../Home/Index";
         };
     </script>
 }

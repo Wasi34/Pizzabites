@@ -6,7 +6,7 @@
     @Styles.Render("~/Content/css");
 }
 
-<div class="container">
+<div class="container" >
     <div class="row m-5 pt-2">
         <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5 menuall">
             <img src="~/images/@Product.PRImage">
@@ -36,14 +36,15 @@
                 }
                 else
                 {
-                    <button class="addtocart" onclick="location.href = '/home/AddToCart?id=@Product.PRID'">
-                        @*<button class="addtocart" onclick="myFunction()">*@
+                    
+                        <button class="viewmore" onclick="location.href = '/home/AddToCart?id=@Product.PRID'">
+                            @*<button class="addtocart" onclick="myFunction()">*@
 
-                        <p class="text-align-centre">ADD TO CART</p>
-                    </button>
-                }
-            }
-        </div>
+                            <p class="text-align-centre">ADD TO CART</p>
+                        </button>
+                        }
+                        }
+                </div>
     </div>
     @if (Session["CUSName"] != null)
     {
@@ -65,7 +66,7 @@
             <h2 class="headcomment">Comments</h2>
         </div>
     </div>
-    <div class="row rowcomment">
+    <div class="alert-light">
         @foreach (var item in comments)
         {
             <div class="col-xl-12">
