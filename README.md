@@ -21,6 +21,7 @@ Required technogies to run this Project:
 1.Visual Studio 2022 or higher
 2.Microsoft SQL Server Management Studio
 
+Steps of how to run this project:-
 Step 1: Download the zip file.
 Step 2: Execute the sql file in SQL server.
 Step 3: Connect your database with visual studio and create model.
