@@ -7,7 +7,7 @@ Manager's Side:
 • Dashboard
 • Reply message from users
 • Comment Box
-• Search food
+• Search food in menu
 
 Customer’s Side: 
 • Registration and Login 
@@ -16,7 +16,7 @@ Customer’s Side:
 • Add food to cart 
 • Checkout page to place order 
 • Order history
-• Search food
+• Search food in menu
 • Comment Box
 
 Required technogies to run this Project:
