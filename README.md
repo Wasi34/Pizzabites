@@ -1,5 +1,5 @@
 Pizzabites is an E-Commerce ASP.NET MVC based website for ordering food.
-
+It's a 3rd year 2nd semester project.
 Features:
 Manager's Side:
 • Login 
