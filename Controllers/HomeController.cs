@@ -29,12 +29,23 @@ namespace Pizzabites.Controllers
 
         public ActionResult Register()
         {
+            if (Session["CUSName"] != null)
+            {
+                ViewBag.loggedIn = "User already logged in";
+                return RedirectToAction("Index");
+            }
             return View();
         }
 
         [HttpPost]
         public ActionResult Register(Customer customer)
         {
+
+            if (Session["CUSName"] != null)
+            {
+                ViewBag.loggedIn = "User already logged in";
+                return RedirectToAction("Index");
+            }
             if (!(customer.CUSEmail.EndsWith(".com") || customer.CUSEmail.EndsWith(".edu")))
             {
                 ViewBag.Notification = "Email Format Incorrect.";
@@ -82,6 +93,7 @@ namespace Pizzabites.Controllers
             if (Session["CUSName"] != null)
             {
                 ViewBag.loggedIn = "User already logged in";
+                return RedirectToAction("Index");
             }
             return View();
         }
@@ -90,6 +102,11 @@ namespace Pizzabites.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(Customer customer)
         {
+            if (Session["CUSName"] != null)
+            {
+                ViewBag.loggedIn = "User already logged in";
+                return RedirectToAction("Index");
+            }
             if (customer.CUSEmail.Equals("Pizzabites@gmail.com") && customer.CUSPassword.Equals("pizzabites"))
             {
                 ViewBag.Login = "Admin Logged In";

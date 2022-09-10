@@ -91,10 +91,11 @@ Create table OrderList(
 	cusAddress varchar(500),
 	orderDate datetime ,
 	PaymentMethod varchar(20),
-	DeliveryBoy varchar(20),
-	DeliveryBoyPhoneNumber varchar(11),
-	DeliveryTime varchar(20),
-	Confirmation varchar(20)
+	
+	--DeliveryBoy varchar(20),
+	--DeliveryBoyPhoneNumber varchar(11),
+	--DeliveryTime varchar(20),
+	--Confirmation varchar(20)
 )
 
 drop table OrderList
@@ -110,8 +111,11 @@ CustName varchar (50) Not Null,
 CommentMessage varchar(5000) Not Null
 )
 drop table comment
+
 select * from Comment
-truncate table comment
+
 Select * from Product
-Select * from Product where PRType = 'Pizza'
-Select * from Product where PRType = 'Pizza' order by PRID ASC 
+
+select * from Customer
+
+select * from orderlist
