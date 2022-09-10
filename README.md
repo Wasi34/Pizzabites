@@ -2,12 +2,12 @@ Pizzabites is an E-Commerce ASP.NET MVC based website for ordering food.
 
 Features:
 Manager's Side:
-• Registration and Login 
-• Managing the contents: Add/Delete/Update food category 
-• Managing the orders
+• Login 
+• Managing the contents: Add food category 
 • Dashboard
-• System settings
-• Set delivery boy and estimated sending time
+• Reply message from users
+• Comment Box
+• Search food
 
 Customer’s Side: 
 • Registration and Login 
@@ -16,6 +16,8 @@ Customer’s Side:
 • Add food to cart 
 • Checkout page to place order 
 • Order history
+• Search food
+• Comment Box
 
 Required technogies to run this Project:
 1.Visual Studio 2022 or higher
