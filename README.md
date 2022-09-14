@@ -19,7 +19,7 @@ Customer’s Side:
 • Search food in menu
 • Comment Box
 
-Required technogies to run this Project:
+Required technologies to run this Project:
 1.Visual Studio 2022 or higher
 2.Microsoft SQL Server Management Studio 2008
 
