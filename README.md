@@ -21,7 +21,7 @@ Customer’s Side:
 • Search food in menu
 • Comment Box
 
-# Required technologies 
+# Required Technologies 
 1.Visual Studio 2022 or higher
 2.Microsoft SQL Server Management Studio 2008
 
