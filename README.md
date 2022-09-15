@@ -1,7 +1,8 @@
 # Pizzabites
 Pizzabites is an E-Commerce ASP.NET MVC based website for ordering food.
 It's a 3rd year 2nd semester project.
-Features:
+
+# Features
 Manager's Side:
 • Login 
 • Managing the contents: Add food category 
@@ -20,11 +21,11 @@ Customer’s Side:
 • Search food in menu
 • Comment Box
 
-Required technologies to run this Project:
+# Required technologies 
 1.Visual Studio 2022 or higher
 2.Microsoft SQL Server Management Studio 2008
 
-Steps of how to run this project:-
+# How to Install & Use
 Step 1: Download the zip file.
 Step 2: Execute the sql file in SQL server.
 Step 3: Connect your database with visual studio and create model.
